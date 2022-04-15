@@ -1,0 +1,197 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[12pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+\newlength\listtripleitemmaincolumnwidth
+
+\makeatletter
+\renewcommand*{\recomputecvlengths}{%
+  \setlength{\quotewidth}{0.65\textwidth}%
+  \setlength{\maincolumnwidth}{\textwidth-\separatorcolumnwidth-\hintscolumnwidth}%
+  \setlength{\listitemmaincolumnwidth}{\maincolumnwidth-\listitemsymbolwidth}%
+  \setlength{\doubleitemmaincolumnwidth}{\maincolumnwidth-\hintscolumnwidth-\separatorcolumnwidth-\separatorcolumnwidth}%
+  \setlength{\doubleitemmaincolumnwidth}{0.5\doubleitemmaincolumnwidth}%
+  \setlength{\listdoubleitemmaincolumnwidth}{\maincolumnwidth-\listitemsymbolwidth-\separatorcolumnwidth-\listitemsymbolwidth}%
+  \setlength{\listdoubleitemmaincolumnwidth}{0.5\listdoubleitemmaincolumnwidth}%
+  \setlength\listtripleitemmaincolumnwidth{.66\listdoubleitemmaincolumnwidth}%
+  \renewcommand{\headwidth}{\textwidth}%
+  \setlength{\parskip}{0\p@}%
+}
+\makeatother
+
+\newcommand{\cvdoublecolumn}[2]{%
+  \cvline{}{%
+  \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#1\end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#2\end{minipage}%
+ }%
+}
+
+\newcommand{\cvtriplecolumn}[3]{%
+  \cvline{}{%
+  \begin{minipage}[t]{\listtripleitemmaincolumnwidth}#1\end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{\listtripleitemmaincolumnwidth}#2\end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{\listtripleitemmaincolumnwidth}#3\end{minipage}%
+ }%
+}
+
+\newcommand{\cvreference}[7]{%
+  \textbf{#1}\newline% Name
+  \ifthenelse{\equal{#2}{}}{}{\addresssymbol~#2\newline}%
+  \ifthenelse{\equal{#3}{}}{}{#3\newline}%
+  \ifthenelse{\equal{#4}{}}{}{#4\newline}%
+  \ifthenelse{\equal{#5}{}}{}{#5\newline}%
+  \ifthenelse{\equal{#6}{}}{}{\emailsymbol~\texttt{#6}\newline}%
+  \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7}}
+
+\usepackage[backend=biber, defernumbers, sorting=none, maxnames=50]{biblatex}
+
+\DeclareSortingTemplate{ymdnt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{00}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{00}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{0000}
+  }
+}
+\addbibresource{publications.bib}
+\defbibheading{bibliography}{}
+\setcounter{biburlnumpenalty}{100}  % allow breaks at numbers
+\setcounter{biburlucpenalty}{100}   % allow breaks at uppercase letters
+\setcounter{biburllcpenalty}{100}   % allow breaks at lowercase letters
+
+% moderncv themes
+\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{black}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+
+% personal data
+\name{Jason}{Laura}
+%\title{Resumé title}                               % optional, remove / comment the line if not wanted
+\address{3404 S. Carol Drive}{Flagstaff AZ}{86005}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+\phone[mobile]{(928)~864~7366}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+2~(345)~678~901}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{jlaura@usgs.gov} 
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Education}
+\cventry[1em]{Aug. 2012 -- Dec. 2015}{Ph.D.}{Arizona State University}{Tempe, AZ}{}{Dissertation: "A Taxonomy of Parallel Vector Spatial Analysis Algorithms"}  % arguments 3 to 6 can be left empty
+\cventry[1em]{Jan. 2011 - Aug. 2012}{M.A.}{The Pennsylvania State University}{State College, PA}{}{Thesis: "Penn State Lunar Lion Landing Site Selection Process as a Competitor in the Google Lunar X Prize"}
+\cventry[1em]{Sept. 2009 - Jan. 2011}{Certificate in Geographic Information Systems}	{The Pennsylvania State University}{State College, PA}{}{Specializing in Spatial Database Design and Remote Sensing}
+
+\cventry{Sept. 2000 - Jan. 2006}{B.A.}{Montclair State University}{Montclair, NJ}{}{Music Education / German Minor, Magna Cum Laude, Teaching Certificate (K-12)}
+
+\section{Professional Experience}
+\cventry[1em]{Oct. 2018 -- }{Software Lead}{U.S. Geological Survey}{Flagstaff, AZ}{}{Software lead for all Astrogeology Science Center software including the Integrated System for Imagers and Spectrometers (ISIS). Oversaw the transition of the software to an open source project. Managing a development team of approximately 10 developers working on over two dozen independent projects each fiscal year.}
+
+\cventry[1em]{Dec. 2017 -- }{EDGE Research Scientist}{U.S. Geological Survey}{Flagstaff, AZ}{}{Research focusing on Planetary Spatial Data Infrastructure, the application of Computer Vision and photogrammetry techniques to planetary data, parallel computing, and distributed systems for Big Data analysis. Led the creation of a six member research development team that consistently delivered for both research science and business projects.}
+
+\cventry[1em]{Dec. 2015 -- Dec. 2017}{Shoemaker Post-Doctoral Fellow}{U.S. Geological Survey}{Flagstaff, AZ}{}{Research focusing on the integration of image matching techniques to support large homogeneous planetary remotely sensed data and classic photogrammetric techniques, thermal modeling of the Mars surface using spatial statistical analysis methods, the application of Big Data technologies to planetary science data, and Planetary Spatial Data Infrastructure (PSDI) .}
+
+\cventry[1em]{Dec. 2013--Dec. 2015}{Geographer}{U.S. Geological Survey}{Flagstaff, AZ}{}{Developed custom geospatial tools for planetary data analysis including spectral calculators, image manipulation and processing software, geovisualization tools, geologic process models, and statistical analysis tools in Python, C++, VB.NET, and Fortran.}
+
+\cventry[1em]{Aug. 2013--Dec. 2013}{Consultant}{Vehicle Data Science Corp}{Oakland, CA}{}{Spatial RDBMS design and deployment in a distributed, big data processing environment to support spatial analysis of GPS data. Open- source plugin development to support ESDA in Quantum GIS.}
+
+\cventry[1em]{June 2012--Dec. 2013}{Contractor}{U.S. Geological Survey}{Flagstaff, AZ}{}{Developed custom geospatial tools for planetary data analysis including spectral calculators, image manipulation and processing software, geovisualization tools, geologic process models, and statistical analysis tools in Python, C++, VB.NET, and Fortran.}
+
+\cventry[1em]{Feb. 2006--June 2012}{Director of Bands}{Springfield Public Schools}{Springfield, NJ}{}{Extensive pedagogical experience directing three performing ensembles totaling over 100 performers. Worked to develop and implement multiple curriculum including a music technology lab.}
+
+\section{Major Research Interests}
+\begin{itemize}
+	\item Planetary Spatial Data Infrastructure and Spatial Data Infrastructure
+	\item Geospatial Cyberinfrastructure and spatially aware Big Data
+	\item Distributed geospatial information processing
+	\item Photogrammetry, sensor models, bundle adjustment, image matching
+	\item Parallelization of geocomputation algorithms
+	\item Open source geospatial tool development
+	\item Application of terrestrial geospatial analytics and GISystems to planetary data
+\end{itemize}
+
+\section{Peer Reviewed Publications}
+\defbibfilter{papers}{
+  type=article or
+  type=incollection
+}
+
+\newrefcontext[sorting=ydnt]
+\printbibliography[filter=papers, resetnumbers]
+\nocite{*}
+
+\section{Proceedings \& Presentations}
+\defbibfilter{presentations}{
+  type=inproceedings or
+  type=misc
+}
+\newrefcontext[sorting=ydnt]
+\printbibliography[filter=presentations, resetnumbers]
+\nocite{*}
+
+\section{University Courses Taught}
+\cventry[1em]{Fall 2015, Fall 2016, Spring 2017, Fall 2017}{Mathematics for GIS}{Arizona State University}{Tempe AZ}{}{A mathematics primer for quantitative geographers with emphasis shifted to focus on the underlying mathematical methods that support spatial analysis including linear algebra, computational geometry, graph and set theory, probability, and introductory statistics.}
+
+\cventry[1em]{Spring 2016}{Programming for GIS}{Arizona State University}{Tempe AZ}{}{A Python programming course focusing on spatial data handling and algorithm implementation; taught in Python.  Enrollment from geography and computer science departments.}
+
+\end{document}
